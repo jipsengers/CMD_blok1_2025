@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eindproject CMD – Jip Sengers</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="app" role="application">
+    <!-- Wezen afbeelding (verandert per state) -->
+    <img
+      id="expression"
+      src="assets/awake.png"
+      alt="Wezen gezichtsuitdrukking: Wakker"
+      width="1920" height="1080"
+    />
+
+    <!-- Overlay: start de ervaring -->
+    <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="false">
+      <div class="overlay_content">
+        <h1>Start de wezenervaring</h1>
+        <p>
+          Geef toegang tot de webcam. Het wezen start <strong>wakker</strong>.<br />
+          Maak een <strong>hartjesgebaar</strong> om de slaaproutine te starten
+          (of druk op <kbd>H</kbd>).
+        </p>
+        <button id="startButton" type="button" class="pill-btn">Start</button>
+      </div>
+    </div>
+
+    <!-- Status linksonder -->
+    <p id="status" class="status" aria-live="polite">
+      Maak een hartjesgebaar om de slaaproutine te starten — of druk op H
+    </p>
+
+    <!-- Actieknoppen (altijd verborgen tot nodig) -->
+    <button id="open-ar" class="pill-btn action-left hidden" type="button" aria-label="Open de droomwereld">
+      Open de droomwereld
+    </button>
+
+    <button id="reactiveBtn" class="pill-btn action-right hidden" type="button" aria-label="Start oplettende modus">
+      Start oplettende modus
+    </button>
+  </main>
+
+  <!-- TensorFlow & Teachable Machine -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.4/dist/teachablemachine-image.min.js"></script>
+
+  <!-- App -->
+  <script src="script.js"></script>
+</body>
+</html>

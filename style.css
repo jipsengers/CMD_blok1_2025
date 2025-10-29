@@ -1,0 +1,108 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --panel: rgba(12, 18, 31, .85);
+  --panel-border: rgba(128, 158, 219, .35);
+  --glow: rgba(6, 12, 24, .5);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #0d1117, #030407 80%);
+  color: #f8f9fb;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 9, 16, .85);
+}
+
+#expression {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 180ms ease-in-out;
+  background: #000;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 2.5rem; text-align: center;
+  background: rgba(3, 8, 20, .82);
+  backdrop-filter: blur(6px);
+  transition: opacity 220ms ease-in-out, visibility 220ms ease-in-out;
+}
+.overlay--hidden { opacity: 0; pointer-events: none; visibility: hidden; }
+.overlay_content {
+  max-width: min(560px, 90vw);
+  display: grid; gap: 1.25rem;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  box-shadow: 0 1.5rem 3rem var(--glow);
+}
+.overlay_content h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.4rem); }
+.overlay_content p { margin: 0; line-height: 1.5; color: rgba(236, 241, 255, .78); }
+
+/* Knoppen */
+.pill-btn {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  padding: .9rem 2.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #05090f;
+  background: linear-gradient(135deg, #8bd8ff, #6ba4ff 60%, #8f8bff);
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 200ms ease, opacity 150ms ease;
+}
+.pill-btn:hover:not(:disabled){ transform: translateY(-1px) scale(1.01); box-shadow: 0 .75rem 1.5rem rgba(111,164,255,.35); }
+.pill-btn:active:not(:disabled){ transform: translateY(0); box-shadow: 0 .25rem .85rem rgba(111,164,255,.4); }
+.pill-btn:disabled{ cursor: progress; opacity: .6; }
+
+/* Status linksonder */
+.status {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  margin: 0;
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(215, 227, 255, 0.92);
+  background: rgba(9, 15, 27, 0.78);
+  border: 1px solid rgba(128, 158, 219, 0.30);
+  backdrop-filter: blur(4px);
+}
+@media (max-width: 768px){
+  .status{ left: 1rem; bottom: 1rem; font-size: .9rem; padding: .6rem 1rem; }
+}
+
+/* Actieknoppen posities */
+.action-left  { position: fixed; bottom: 16px; left: 16px; }
+.action-right { position: fixed; bottom: 16px; right: 16px; }
+.hidden { display: none !important; }
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+  }
+}
