@@ -1,15 +1,10 @@
-/**************************************************
- * script.js — Wezenervaring (volledige flow)
- **************************************************/
-
-/*************** PADEN & CONFIG ***************/
 const URL_BEWEGING = "model-beweging/";   // TM labels: "Geen beweging", "Beweging"
 const URL_HART     = "model-hart/";       // TM class:  "hart_gebaar"
 
-// Zet hier je (tijdelijke) Blippar Preview link:
+// Blippar Preview link:
 const BLIPPAR_URL  = "https://ar.blippar.com/155118964";
 
-// Platform-detectie (optioneel informatief)
+// Platform-detectie 
 const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 // Timings (ms)
@@ -215,7 +210,7 @@ function openPostBlipAfterDelay(){
   }, BLIP_DELAY_MS);
 }
 
-/*************** REACTIEVE MODUS ***************/
+/*************** OPLETTENDE MODUS ***************/
 function startReactive(){
   hide(openArBtn);
   hide(reactiveBtn);
@@ -335,7 +330,7 @@ async function loop(){
     return;
   }
 
-  // 3) REACTIEVE MODUS
+  // 3) OPLETTENDE MODUS
   if (state.phase === "REACTIVE"){
     try{
       const predsMove = await modelBeweging.predict(webcam.canvas);
@@ -349,7 +344,7 @@ async function loop(){
     return;
   }
 
-  // AUTO_SLEEP / SLEEP hebben geen extra looplogica
+  // AUTO_SLEEP / SLEEP 
   raf = requestAnimationFrame(loop);
 }
 
@@ -357,7 +352,7 @@ async function loop(){
 openArBtn?.addEventListener("click", () => {
   visitedAR = true;
   hide(openArBtn);
-  show(reactiveBtn);            // alvast tonen (voor het geval tab niet “hidden” wordt)
+  show(reactiveBtn);            
   openExternal(BLIPPAR_URL);
 });
 
@@ -369,7 +364,7 @@ reactiveBtn?.addEventListener("click", () => {
 window.addEventListener("keydown", e=>{
   const k = e.key.toLowerCase();
   if (k==="h" && state.phase==="WAIT_HEART") state.heartDetected = true; // demo
-  if (k==="r") startReactive(); // snelle toggle (optioneel)
+  if (k==="r") startReactive(); 
 });
 
 window.addEventListener("load", async ()=>{
