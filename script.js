@@ -1,3 +1,9 @@
+/* 
+  Project: Ontwerp een fysiek prototype van een wezen met een lichaam, zintuigen en controls, 
+  dat in een AR-omgeving leeft.
+  Door: Jip Sengers
+  CMD Blok 1 2025 – Eindwerk (Experimenteren met interactie)
+*/
 const URL_BEWEGING = "model-beweging/";   // TM labels: "Geen beweging", "Beweging"
 const URL_HART     = "model-hart/";       // TM class:  "hart_gebaar"
 
